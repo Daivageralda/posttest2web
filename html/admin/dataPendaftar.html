@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tombol Dropdown dengan Tailwind CSS dan JavaScript</title>
+    <link rel="stylesheet" href="../../css/dataPendaftar.css">
+    
+  </head>
+  <body>
+    <nav>
+      <img
+        src="https://mef.academy/wp-content/uploads/2020/12/TheAcademyLogoTransparent_FullColor-NoTagline-600x338.png"
+        alt=""
+      />
+      <div class="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="#" onclick="displayData()">Data Peserta</a></li>
+        </ul>
+      </div>
+      <div class="kanan">
+        <div class="greetings" id="sambutan">
+          <span id="waktu"></span>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-button">Admin
+            <span class="arrow-down"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" id="logout-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="user-list"></div>
+
+    <script>
+      function closeDropdown(event) {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const dropdownButton = dropdown.querySelector('.dropdown-button');
+
+        if (!dropdown.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+          dropdownButton.querySelector('.arrow-down').classList.remove('rotate');
+        }
+      }
+      document.addEventListener('click', closeDropdown);
+
+      const dropdownButton = document.querySelector('.dropdown-button');
+      dropdownButton.addEventListener('click', function() {
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        this.querySelector('.arrow-down').classList.toggle('rotate');
+        dropdownMenu.classList.toggle('show');
+      });
+
+      function logout() {
+        sessionStorage.removeItem('username');
+        window.location.replace('../guest/index.html');
+      }
+      const logoutLink = document.getElementById('logout-link');
+      logoutLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        logout();
+      });
+    </script>
+    <script src="../../js/index.js"></script>
+  </body>
+
+</html>

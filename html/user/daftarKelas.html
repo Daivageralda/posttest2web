@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/daftarKelas.css" />
+    <script
+      src="https://kit.fontawesome.com/20b151daf7.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <nav>
+      <img
+        src="https://mef.academy/wp-content/uploads/2020/12/TheAcademyLogoTransparent_FullColor-NoTagline-600x338.png"
+        alt=""
+      />
+      <div class="navigation">
+        <ul>
+          <li><a href="../admin/dataPendaftar.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="daftarKelas.html">Daftar Kelas</a></li>
+        </ul>
+      </div>
+      <div class="kanan">
+        <div class="greetings" id="sambutan">
+          <span id="waktu"></span>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-button"><span id="nama"></span>
+            <span class="arrow-down"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" id="logout-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="borang">
+      <div class="judul">
+        <h1>Daftarkan Diri Anda Pada Kelas Ini</h1>
+      </div>
+      <div class="caption">
+        <p>Daftar Untuk Mendapat Bimbingan Dari Ahli Terbaik Kami</p>
+      </div>
+      <form id="my-form">
+        <label for="name">Nama Lengkap:</label><br />
+        <input type="text" id="name" name="name" /><br />
+        <br />
+        <label for="alamat">Alamat :</label><br />
+        <input type="text" id="alamat" name="alamat" /><br />
+        <br />
+        <label for="number">No. Telepon :</label><br />
+        <input type="text" id="number" name="number" /><br />
+        <br />
+        <label for="email">Email :</label><br />
+        <input type="email" id="email" name="email" /><br />
+        <br />
+        <label for="radio">Jenjang Pendidikan :</label><br />
+        <input type="radio" id="SD" name="pendidikan" value="SD"/>Sekolah Dasar<br />
+        <input type="radio" id="SMP" name="pendidikan" value="SMP"/>Sekolah Menengah Pertama<br />
+        <input type="radio" id="SMA" name="pendidikan" value="SMA" />Sekolah Menengah Atas<br />
+        <br />
+        <label for="alasan">Alasan Registrasi :</label><br />
+        <textarea name="alasan" id="alasan" cols="100" rows="10"></textarea>
+        <br /><br />
+        <label for="checkbox">Tau "The Academy" Darimana :</label><br />
+        <input type="checkbox" id="teman" name="informasi" value="teman"/>Teman atau sahabat<br/>
+        <input type="checkbox" id="guru" name="informasi" value="guru"/>Guru<br />
+        <input type="checkbox" id="orang tua" name="informasi" value="orang tua"/>Orang tua<br />
+        <input type="checkbox" id="brosur" name="informasi" value="brosur"/>Brosur<br />
+        <input type="checkbox" id="sosmed" name="informasi" value="sosmed"/>Sosial media<br />
+        <br />
+        <br />
+        <!-- <label for="foto">Pas Foto :</label><br /> -->
+        <!-- <input type="file" id="file-input" form="my-form" accept="img/*"><br /> -->
+        <!-- <br /> -->
+        <input type="button" onclick="saveDaftar()" form="my-form" value="Daftar">
+      </form>
+    </div>
+  </body>
+  <script>
+      function closeDropdown(event) {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const dropdownButton = dropdown.querySelector('.dropdown-button');
+
+        if (!dropdown.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+          dropdownButton.querySelector('.arrow-down').classList.remove('rotate');
+        }
+      }
+      document.addEventListener('click', closeDropdown);
+
+      const dropdownButton = document.querySelector('.dropdown-button');
+      dropdownButton.addEventListener('click', function() {
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        this.querySelector('.arrow-down').classList.toggle('rotate');
+        dropdownMenu.classList.toggle('show');
+      });
+
+      function logout() {
+        sessionStorage.removeItem('username');
+        window.location.replace('../guest/index.html');
+      }
+      const logoutLink = document.getElementById('logout-link');
+      logoutLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        logout();
+      });
+  </script>
+  <script src="../../js/index.js"></script>
+</html>

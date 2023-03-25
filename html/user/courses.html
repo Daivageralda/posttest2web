@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/courses.css" />
+    <script
+      src="https://kit.fontawesome.com/20b151daf7.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Courses</title>
+  </head>
+  <body>
+    <nav>
+      <img
+        src="https://mef.academy/wp-content/uploads/2020/12/TheAcademyLogoTransparent_FullColor-NoTagline-600x338.png"
+        alt=""
+      />
+      <div class="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="daftarKelas.html">Daftar Kelas</a></li>
+        </ul>
+      </div>
+      <div class="kanan">
+        <div class="greetings" id="sambutan">
+          <span id="waktu"></span>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-button"><span id="nama"></span>
+            <span class="arrow-down"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" id="logout-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section id="box">
+      <div class="judul">
+        <h1>Pilih Kursus Yang Sesuai Dengan Jenjang Pendidikan</h1>
+      </div>
+      <div class="card-box">
+        <div class="card">
+          <div class="content">
+            <div class="title">Sekolah Dasar</div>
+            <div class="price">Rp. 129.000</div>
+            <div class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              at posuere eros. Interdum et malesuada fames ac ante ipsum primis
+              in faucibus.
+            </div>
+          </div>
+          <button>Beli Sekarang</button>
+        </div>
+        <div class="card">
+          <div class="content">
+            <div class="title">Sekolah Menengah Pertama</div>
+            <div class="price">Rp. 199.000</div>
+            <div class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              at posuere eros. Interdum et malesuada fames ac ante ipsum primis
+              in faucibus.
+            </div>
+          </div>
+          <button>Beli Sekarang</button>
+        </div>
+        <div class="card">
+          <div class="content">
+            <div class="title">Sekolah Menengah Atas</div>
+            <div class="price">Rp. 249.000</div>
+            <div class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              at posuere eros. Interdum et malesuada fames ac ante ipsum primis
+              in faucibus.
+            </div>
+          </div>
+          <button>Beli Sekarang</button>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer">
+        <div class="row">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+
+        <div class="row">
+          <ul>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Career</a></li>
+          </ul>
+        </div>
+
+        <div class="row">
+          THE ACADEMY Copyright © 2023 Academy - All rights reserved || Designed
+          By: Han
+        </div>
+      </div>
+    </footer>
+    <script>
+      function closeDropdown(event) {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const dropdownButton = dropdown.querySelector('.dropdown-button');
+
+        if (!dropdown.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+          dropdownButton.querySelector('.arrow-down').classList.remove('rotate');
+        }
+      }
+      document.addEventListener('click', closeDropdown);
+
+      const dropdownButton = document.querySelector('.dropdown-button');
+      dropdownButton.addEventListener('click', function() {
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        this.querySelector('.arrow-down').classList.toggle('rotate');
+        dropdownMenu.classList.toggle('show');
+      });
+
+      function logout() {
+        sessionStorage.removeItem('username');
+        window.location.replace('../guest/index.html');
+      }
+      const logoutLink = document.getElementById('logout-link');
+      logoutLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        logout();
+      });
+    </script>
+    <script src="../../js/index.js"></script>
+  </body>
+</html>
